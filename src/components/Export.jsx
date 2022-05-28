@@ -1,8 +1,8 @@
 import html2Canvas from "html2canvas";
 
-const Export = ({ name }) => {
+const Export = ({ name, memeRef }) => {
   const exportar = async () => {
-    const canvas = await html2Canvas(document.querySelector("#meme"));
+    const canvas = await html2Canvas(memeRef.current);
     const img = canvas.toDataURL("image/png");
     const link = document.createElement("a");
     link.download = name;

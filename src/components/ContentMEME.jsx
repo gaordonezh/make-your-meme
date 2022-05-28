@@ -1,9 +1,9 @@
-const ContentMEME = ({ imagen, upload, text }) => {
+const ContentMEME = ({ imagen, upload, text, memeRef }) => {
   const img =
     imagen === "custom" ? upload ?? "./static/images/empty.jpg" : `./static/images/${imagen}.jpg`;
 
   return (
-    <div className="meme" id="meme">
+    <div className="meme" id="meme" ref={memeRef}>
       <p>{text.linea1}</p>
       <p>{text.linea2}</p>
       <figure>
