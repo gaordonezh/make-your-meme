@@ -5,7 +5,7 @@
   "background_color": "#101e21",
   "display": "standalone",
   "scope": "/",
-  "start_url": "/",
+  "start_url": ".",
   "icons": [
     {
       "src": "/static/logo/maskable.png",
