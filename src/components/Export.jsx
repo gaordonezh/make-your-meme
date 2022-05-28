@@ -12,10 +12,9 @@ const Export = ({ name }) => {
     const link = document.createElement("a");
     link.download = name;
     link.href = img;
+    link.click();
 
     await sleep(1000);
-
-    link.click();
     setLoading(false);
   };
 
