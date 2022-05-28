@@ -33,11 +33,5 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ],
-
-  "lang": "en",
-  "description": "Simpe application to make your meme",
-  "dir": "ltr",
-  "orientation": "landscape",
-  "prefer_related_applications": false
+  ]
 }
