@@ -1,0 +1,161 @@
+:root {
+  --radius: 20px;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+body {
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(to right top, #23414d, #1e3841, #192f36, #14262b, #101e21);
+}
+
+section {
+  display: flex;
+  flex-flow: row;
+}
+
+article {
+  margin: var(--radius);
+  border-radius: var(--radius);
+}
+
+article:first-child {
+  width: 700px;
+}
+
+article:last-child {
+  width: 400px;
+  padding: var(--radius);
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+article h1 {
+  color: #101e21;
+  font-weight: 900;
+  font-size: 30px;
+  display: flex;
+  flex-flow: column;
+  margin-bottom: var(--radius);
+}
+
+article h1 span {
+  width: 150px;
+  border-bottom: 1px solid #fff;
+}
+
+label {
+  color: #fff;
+  font-weight: 200;
+}
+
+article h6 {
+  color: #fff;
+  font-weight: 200;
+  font-size: var(--radius);
+  margin-bottom: calc(3 * var(--radius));
+}
+
+input,
+select {
+  width: 100%;
+  padding: 12px var(--radius);
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #a5d9d0;
+  border-radius: 4px;
+  box-sizing: border-box;
+  outline: none;
+  background-color: transparent;
+  color: #fff;
+}
+select {
+  color: #a5d9d0;
+}
+
+button {
+  width: 100%;
+  background-color: #a5d9d0;
+  padding: 14px var(--radius);
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 900;
+  font-size: 15px;
+  margin-top: calc(3 * var(--radius));
+}
+
+.meme {
+  position: relative;
+  height: 100%;
+}
+
+.meme p {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  color: #fff;
+  text-align: center;
+  font-weight: 900;
+  text-shadow: 0 0 10px #000, 0px 0px 10px #000;
+}
+
+.meme p:nth-child(1) {
+  top: 10%;
+}
+
+.meme p:nth-child(2) {
+  bottom: 10%;
+}
+
+figure {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+figure img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: 1200px) {
+  article:first-child {
+    width: 60%;
+  }
+
+  article:last-child {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  section {
+    flex-flow: column;
+    width: 90%;
+    margin: var(--radius) auto;
+  }
+  article {
+    margin: 0 0 var(--radius) 0;
+  }
+  article:first-child {
+    width: 100%;
+    order: 1;
+  }
+
+  article:last-child {
+    width: 100%;
+    order: 2;
+  }
+}
