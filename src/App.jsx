@@ -1,5 +1,9 @@
 import React, { useState } from "react";
-import html2Canvas from "html2canvas";
+import SelectType from "./components/SelectType";
+import InputTempURL from "./components/InputTempURL";
+import InputText from "./components/InputText";
+import Export from "./components/Export";
+import ContentMEME from "./components/ContentMEME";
 
 const App = () => {
   const [linea1, setLinea1] = useState("");
@@ -7,39 +11,15 @@ const App = () => {
   const [imagen, setImagen] = useState("fire");
   const [upload, setUpload] = useState(undefined);
 
-  const exportar = async () => {
-    const canvas = await html2Canvas(document.querySelector("#meme"));
-    const img = canvas.toDataURL("image/png");
-    const link = document.createElement("a");
-    link.download = `MEMEXD_${imagen}.png`;
-    link.href = img;
-    link.click();
-  };
-
-  const handleUploadImage = (event) => {
-    const fileUploaded = event.target.files[0];
-    if (fileUploaded !== null && fileUploaded !== undefined) {
-      setUpload(URL.createObjectURL(event.target.files[0]));
-    }
-  };
-
   const handleSetImage = (event) => {
     setImagen(event.target.value);
     if (upload) setUpload(undefined);
   };
 
-  const img = imagen === "custom" ? upload ?? "./static/images/empty.jpg" : `./static/images/${imagen}.jpg`;
-
   return (
     <section>
       <article>
-        <div className="meme" id="meme">
-          <p>{linea1}</p>
-          <p>{linea2}</p>
-          <figure>
-            <img src={img} alt={`MEMEXD_${imagen}.png`} />
-          </figure>
-        </div>
+        <ContentMEME upload={upload} imagen={imagen} text={{ linea1, linea2 }} />
       </article>
       <article>
         <h1>
@@ -47,50 +27,13 @@ const App = () => {
           <span />
         </h1>
         <h6>Welcome onboard with us</h6>
+        <ContentMEME upload={upload} imagen={imagen} text={{ linea1, linea2 }} />
 
-        <div>
-          <label htmlFor="selectImage">Select your meme type</label>
-          <select value={imagen} onChange={handleSetImage} id="selectImage">
-            <option value="fire">CASA EN LLAMAS</option>
-            <option value="futurama">FUTURAMA</option>
-            <option value="history">HISTORY CHANNEL</option>
-            <option value="matrix">MATRIX</option>
-            <option value="philosoraptor">PHILOSORAPTOR</option>
-            <option value="smart">SMART GUY</option>
-            <option value="custom">PERSONALIZADO</option>
-          </select>
-        </div>
-
-        {imagen === "custom" && (
-          <div>
-            <label htmlFor="customImage">Select your image</label>
-            <input type="file" placeholder="IMAGEN" id="customImage" onChange={handleUploadImage} />
-          </div>
-        )}
-
-        <div>
-          <label htmlFor="textOne">Top text</label>
-          <input
-            id="textOne"
-            type="text"
-            placeholder="Linea 1"
-            value={linea1}
-            onChange={(event) => setLinea1(event.target.value)}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="textTwo">Bottom text</label>
-          <input
-            id="textTwo"
-            type="text"
-            placeholder="Linea 2"
-            value={linea2}
-            onChange={(event) => setLinea2(event.target.value)}
-          />
-        </div>
-
-        <button onClick={exportar}>EXPORTAR</button>
+        <SelectType imagen={imagen} handleSetImage={handleSetImage} />
+        {imagen === "custom" && <InputTempURL setUpload={setUpload} />}
+        <InputText label="Top text" value={linea1} setValue={setLinea1} />
+        <InputText label="Bottom text" value={linea2} setValue={setLinea2} />
+        <Export name={`MEMEXD_${imagen}.png`} />
       </article>
     </section>
   );
