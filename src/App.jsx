@@ -28,7 +28,7 @@ const App = () => {
     if (upload) setUpload(undefined);
   };
 
-  const img = imagen === "custom" ? upload ?? "./images/empty.jpg" : `./images/${imagen}.jpg`;
+  const img = imagen === "custom" ? upload ?? "./static/images/empty.jpg" : `./static/images/${imagen}.jpg`;
 
   return (
     <section>
