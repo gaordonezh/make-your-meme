@@ -1,8 +1,8 @@
 {
   "name": "Make your MEME",
   "short_name": "makeyourmeme",
-  "theme_color": "#101e21",
-  "background_color": "#101e21",
+  "theme_color": "#000000",
+  "background_color": "#000000",
   "display": "standalone",
   "scope": "/",
   "start_url": ".",
